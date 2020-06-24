@@ -1,0 +1,17 @@
+<div
+  class="a-block d-flex align-items-center {{classes.root}}"
+  [ngStyle]="{ 'background-image': 'url(' + mainImage_s + ')'}"
+>
+  <div class="text {{classes.innerWrapper}}">
+
+    <div class="post-meta">
+      <span *ngIf="tags" class="category">{{tags}}</span>
+      <span *ngIf="tags"> • </span>
+      <span class="mr-2">{{dateModified}}</span>
+      <span *ngIf="numOfComments"> • </span>
+      <span *ngIf="numOfComments" class="ml-2"><span class="fa fa-comments"></span>{{numOfComments}}</span>
+    </div>
+    <h3>{{headline_s}}</h3>
+    <p *ngIf="showBlurb">{{blurb_t}}</p>
+  </div>
+</div>

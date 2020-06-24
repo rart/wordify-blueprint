@@ -1,0 +1,4 @@
+<div [ngSwitch]="type">
+  <app-home *ngSwitchCase="'home'" [state]="state">home</app-home>
+  <div *ngSwitchDefault>no view</div>
+</div>
