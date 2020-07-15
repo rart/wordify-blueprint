@@ -14,6 +14,8 @@ import { PostCardComponent } from './post-card/post-card.component';
 import { SidebarSearchComponent } from './sidebar-search/sidebar-search.component';
 import { SearchFormComponent } from './search-form/search-form.component';
 import { FormsModule } from '@angular/forms';
+import { SidebarBiosComponent } from './sidebar-bios/sidebar-bios.component';
+import { BioComponent } from './bio/bio.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { FormsModule } from '@angular/forms';
     DynamicRouteComponent,
     PostCardComponent,
     SidebarSearchComponent,
-    SearchFormComponent
+    SearchFormComponent,
+    SidebarBiosComponent,
+    BioComponent
   ],
   imports: [
     BrowserModule,
