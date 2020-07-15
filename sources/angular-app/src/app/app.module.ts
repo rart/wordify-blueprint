@@ -13,6 +13,7 @@ import { DynamicRouteComponent } from './dynamic-route/dynamic-route.component';
 import { PostCardComponent } from './post-card/post-card.component';
 import { SidebarSearchComponent } from './sidebar-search/sidebar-search.component';
 import { SearchFormComponent } from './search-form/search-form.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { SearchFormComponent } from './search-form/search-form.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
