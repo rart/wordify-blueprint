@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ContentService } from '../content.service';
 import { parseDescriptor } from '@craftercms/content';
+import { ContentInstance } from '@craftercms/models';
 
 @Component({
   selector: 'app-dynamic-route',
@@ -12,7 +13,7 @@ export class DynamicRouteComponent implements OnInit {
   constructor(private router: Router, private contentService: ContentService) {}
   private url: string = this.router.url;
   public state;
-  public type;
+  public contentTypeId;
 
   ngOnInit(): void {
     this.contentService.getPageData(this.url, {
@@ -21,9 +22,9 @@ export class DynamicRouteComponent implements OnInit {
       postsOffset: 0
     })
       .subscribe(({ data }) => {
-        const model = parseDescriptor(data.content.items?.[0]);
+        const model = parseDescriptor(data.content.items?.[0]) as ContentInstance;
         const posts = parseDescriptor(data.posts.items);
-        this.type = 'home';
+        this.contentTypeId = model.craftercms.contentTypeId;
         this.state = {
           model,
           posts,

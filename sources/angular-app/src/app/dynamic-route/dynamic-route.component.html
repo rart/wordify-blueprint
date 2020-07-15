@@ -1,4 +1,4 @@
-<div [ngSwitch]="type">
-  <app-home *ngSwitchCase="'home'" [state]="state">home</app-home>
+<div [ngSwitch]="contentTypeId">
+  <app-home *ngSwitchCase="'/page/entry'" [state]="state">home</app-home>
   <div *ngSwitchDefault>no view</div>
 </div>
