@@ -11,6 +11,8 @@ import { SortByPipe } from './sort-by.pipe';
 import { SliderComponent } from './slider/slider.component';
 import { DynamicRouteComponent } from './dynamic-route/dynamic-route.component';
 import { PostCardComponent } from './post-card/post-card.component';
+import { SidebarSearchComponent } from './sidebar-search/sidebar-search.component';
+import { SearchFormComponent } from './search-form/search-form.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { PostCardComponent } from './post-card/post-card.component';
     SortByPipe,
     SliderComponent,
     DynamicRouteComponent,
-    PostCardComponent
+    PostCardComponent,
+    SidebarSearchComponent,
+    SearchFormComponent
   ],
   imports: [
     BrowserModule,

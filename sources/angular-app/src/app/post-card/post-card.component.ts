@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 export const
   PORTRAIT = 'portrait',
@@ -14,7 +14,7 @@ export const
 export class PostCardComponent implements OnInit {
   @Input() tags = '';
   @Input() model;
-  @Input() showBlurb = false ;
+  @Input() showBlurb = false;
   @Input() format = PORTRAIT;
   @Input() classes;
   @Input() numOfComments;
@@ -22,14 +22,29 @@ export class PostCardComponent implements OnInit {
   public blurb_t;
   public headline_s;
   public dateModified;
+  public type;
+  public authorAvatarUrl;
+  public authorName;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
+    this.type = this.format;
     this.mainImage_s = this.model.mainImage_s;
-    this.blurb_t = this.model.blurb_t;
     this.headline_s = this.model.headline_s;
     this.dateModified = this.model.craftercms.dateModified;
+    switch (this.format) {
+      case PORTRAIT : {
+        this.authorAvatarUrl = this.model.authorBio_o[0].profilePic_s;
+        this.authorName = this.model.authorBio_o[0].name_s;
+        break;
+      }
+      case IMAGE_BACKGROUND: {
+        this.blurb_t = this.model.blurb_t;
+        break;
+      }
+    }
   }
 
 }

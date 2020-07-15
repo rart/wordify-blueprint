@@ -11,7 +11,7 @@ import { ContentInstance } from '@craftercms/models';
 })
 export class DynamicRouteComponent implements OnInit {
   constructor(private router: Router, private contentService: ContentService) {}
-  private url: string = this.router.url;
+  private url: string = this.getUrlWithoutParams();
   public state;
   public contentTypeId;
 
@@ -37,6 +37,12 @@ export class DynamicRouteComponent implements OnInit {
           }
         };
       });
+  }
+
+  getUrlWithoutParams() {
+    let urlTree = this.router.parseUrl(this.router.url);
+    urlTree.queryParams = {};
+    return urlTree.toString();
   }
 
 }
