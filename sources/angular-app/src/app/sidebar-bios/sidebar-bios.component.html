@@ -1,1 +1,3 @@
-<p>sidebar-bios works!</p>
+<div *ngFor="let bio of bios" class="sidebar-box">
+  <app-bio [bio]="bio"></app-bio>
+</div>

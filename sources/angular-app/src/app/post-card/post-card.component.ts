@@ -44,6 +44,9 @@ export class PostCardComponent implements OnInit {
         this.blurb_t = this.model.blurb_t;
         break;
       }
+      case LANDSCAPE_COMPRESSED: {
+        break;
+      }
     }
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar-bios',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebar-bios.component.scss']
 })
 export class SidebarBiosComponent implements OnInit {
+  @Input() bios;
 
   constructor() {
   }

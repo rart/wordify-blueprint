@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   public posts_o;
   public numOfPages;
   public pageNumber;
+  public bios_o;
 
   ngOnInit(): void {
     // const {
@@ -30,6 +31,7 @@ export class HomeComponent implements OnInit {
     // } = this.state;
     this.slider_o = this.state.model.slider_o;
     this.posts_o = this.state.posts;
+    this.bios_o = this.state.model.bios_o;
     this.numOfPages = Math.ceil(this.state.meta.posts.total / this.state.meta.posts.limit);
     this.pageNumber = 1;
   }

@@ -16,6 +16,9 @@ import { SearchFormComponent } from './search-form/search-form.component';
 import { FormsModule } from '@angular/forms';
 import { SidebarBiosComponent } from './sidebar-bios/sidebar-bios.component';
 import { BioComponent } from './bio/bio.component';
+import { PopularPostsAsideComponent } from './popular-posts-aside/popular-posts-aside.component';
+import { SidebarCategoriesComponent } from './sidebar-categories/sidebar-categories.component';
+import { SidebarTagsComponent } from './sidebar-tags/sidebar-tags.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { BioComponent } from './bio/bio.component';
     SidebarSearchComponent,
     SearchFormComponent,
     SidebarBiosComponent,
-    BioComponent
+    BioComponent,
+    PopularPostsAsideComponent,
+    SidebarCategoriesComponent,
+    SidebarTagsComponent
   ],
   imports: [
     BrowserModule,
