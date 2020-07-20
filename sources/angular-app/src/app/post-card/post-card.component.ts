@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import Utils from '../utils';
 
 export const
   PORTRAIT = 'portrait',
@@ -25,6 +26,7 @@ export class PostCardComponent implements OnInit {
   public type;
   public authorAvatarUrl;
   public authorName;
+  public slug;
 
   constructor() {
   }
@@ -37,6 +39,7 @@ export class PostCardComponent implements OnInit {
     this.blurb_t = this.model.blurb_t;
     this.authorAvatarUrl = this.model.authorBio_o[0].profilePic_s;
     this.authorName = this.model.authorBio_o[0].name_s;
+    this.slug = Utils.computeSlug(this.model.craftercms.path);
   }
 
 }

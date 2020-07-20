@@ -21,4 +21,11 @@ export default class Utils {
   static siteName() {
     return environment.crafterSiteId || Cookies.get('crafterSite');
   }
+  static computeSlug(path: string) {
+    return path
+      .replace(/(\/site\/components)|(index\.xml)/g, '')
+      .replace(/(\/site\/website)|(index\.xml)/g, '')
+      .replace(/(\/\/)/g, '/')
+      .replace('post/', 'articles/');
+  }
 }

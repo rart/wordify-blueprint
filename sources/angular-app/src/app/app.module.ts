@@ -22,6 +22,7 @@ import { SidebarTagsComponent } from './sidebar-tags/sidebar-tags.component';
 import { CategoryComponent } from './category/category.component';
 import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
+import { PostComponent } from './post/post.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { AboutComponent } from './about/about.component';
     SidebarTagsComponent,
     CategoryComponent,
     ContactComponent,
-    AboutComponent
+    AboutComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,

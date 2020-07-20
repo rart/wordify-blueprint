@@ -4,7 +4,7 @@
     [ngStyle]="{ 'background-image': 'url(' + mainImage_s + ')'}"
     class="a-block d-flex align-items-center {{classes?.root}}"
   >
-    <div class="text {{classes?.innerWrapper}}">
+    <a class="text {{classes?.innerWrapper}}" href="{{slug}}">
       <div class="post-meta">
         <span *ngIf="tags" class="category">{{tags}}</span>
         <span *ngIf="tags"> • </span>
@@ -16,9 +16,9 @@
       </div>
       <h3>{{headline_s}}</h3>
       <p *ngIf="showBlurb">{{blurb_t}}</p>
-    </div>
+    </a>
   </div>
-  <a *ngSwitchCase="'portrait'" class="blog-entry {{classes?.root}}">
+  <a *ngSwitchCase="'portrait'" class="blog-entry {{classes?.root}}" href="{{slug}}">
     <img src="{{mainImage_s}}">
     <div class="blog-content-body">
       <div class="post-meta">
@@ -36,7 +36,7 @@
       <h2>{{headline_s}}</h2>
     </div>
   </a>
-  <a *ngSwitchCase="'landscapeCompressed'" class="{{classes?.root}}">
+  <a *ngSwitchCase="'landscapeCompressed'" class="{{classes?.root}}" href="{{slug}}">
     <img class="mr-4" src="{{mainImage_s}}">
     <div class="text">
       <h4>{{headline_s}}</h4>
@@ -46,7 +46,7 @@
     </div>
   </a>
   <div *ngSwitchCase="'landscape'" class="post-entry-horizontal">
-    <a class="{{classes?.root}}">
+    <a class="{{classes?.root}}" href="{{slug}}">
       <div [ngStyle]="{ 'background-image': 'url(' + mainImage_s + ')'}" class="image"></div>
       <span class="text">
         <div class="post-meta">
