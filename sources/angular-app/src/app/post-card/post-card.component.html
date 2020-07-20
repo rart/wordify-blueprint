@@ -45,6 +45,26 @@
       </div>
     </div>
   </a>
+  <div *ngSwitchCase="'landscape'" class="post-entry-horizontal">
+    <a class="{{classes?.root}}">
+      <div [ngStyle]="{ 'background-image': 'url(' + mainImage_s + ')'}" class="image"></div>
+      <span class="text">
+        <div class="post-meta">
+          <span class="author mr-2">
+            <img src="{{authorAvatarUrl}}">
+            {{authorName}}
+          </span>
+          <span> • </span>
+          <span class="mr-2">{{dateModified}}</span>
+          <span *ngIf="numOfComments"> • </span>
+          <span *ngIf="numOfComments" class="ml-2">
+            <span class="fa fa-comments"></span>{{numOfComments}}
+          </span>
+        </div>
+        <h2>{{headline_s}}</h2>
+      </span>
+    </a>
+  </div>
   <div *ngSwitchDefault>no view</div>
 </div>
 

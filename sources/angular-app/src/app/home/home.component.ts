@@ -7,13 +7,14 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   @Input() state;
-  constructor() {
-  }
   public slider_o;
   public posts_o;
   public numOfPages;
   public pageNumber;
   public bios_o;
+
+  constructor() {
+  }
 
   ngOnInit(): void {
     // const {

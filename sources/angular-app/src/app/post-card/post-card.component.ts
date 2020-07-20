@@ -34,20 +34,9 @@ export class PostCardComponent implements OnInit {
     this.mainImage_s = this.model.mainImage_s;
     this.headline_s = this.model.headline_s;
     this.dateModified = this.model.craftercms.dateModified;
-    switch (this.format) {
-      case PORTRAIT : {
-        this.authorAvatarUrl = this.model.authorBio_o[0].profilePic_s;
-        this.authorName = this.model.authorBio_o[0].name_s;
-        break;
-      }
-      case IMAGE_BACKGROUND: {
-        this.blurb_t = this.model.blurb_t;
-        break;
-      }
-      case LANDSCAPE_COMPRESSED: {
-        break;
-      }
-    }
+    this.blurb_t = this.model.blurb_t;
+    this.authorAvatarUrl = this.model.authorBio_o[0].profilePic_s;
+    this.authorName = this.model.authorBio_o[0].name_s;
   }
 
 }

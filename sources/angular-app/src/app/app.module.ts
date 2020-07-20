@@ -19,6 +19,9 @@ import { BioComponent } from './bio/bio.component';
 import { PopularPostsAsideComponent } from './popular-posts-aside/popular-posts-aside.component';
 import { SidebarCategoriesComponent } from './sidebar-categories/sidebar-categories.component';
 import { SidebarTagsComponent } from './sidebar-tags/sidebar-tags.component';
+import { CategoryComponent } from './category/category.component';
+import { ContactComponent } from './contact/contact.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import { SidebarTagsComponent } from './sidebar-tags/sidebar-tags.component';
     BioComponent,
     PopularPostsAsideComponent,
     SidebarCategoriesComponent,
-    SidebarTagsComponent
+    SidebarTagsComponent,
+    CategoryComponent,
+    ContactComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

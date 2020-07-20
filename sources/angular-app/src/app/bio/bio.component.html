@@ -8,17 +8,18 @@
     </p>
     <p>{{bioText}}</p>
     <p class="social">
-      <a *ngIf="facebookLink" class="p-2" href="#"><span
-        class="fa fa-facebook"
-      ></span>{{facebookLink}}</a>
-      <a *ngIf="twitterLink" class="p-2" href="#"><span class="fa fa-twitter"></span>{{twitterLink}}
+      <a *ngIf="facebookLink" class="p-2" href="{{facebookLink}}">
+        <span class="fa fa-facebook"></span>
       </a>
-      <a *ngIf="instagramLink" class="p-2" href="#"><span
-        class="fa fa-instagram"
-      ></span>{{instagramLink}}</a>
-      <a *ngIf="youTubeLink" class="p-2" href="#"><span
-        class="fa fa-youtube-play"
-      ></span>{{youTubeLink}}</a>
+      <a *ngIf="twitterLink" class="p-2" href="{{twitterLink}}">
+        <span class="fa fa-twitter"></span>
+      </a>
+      <a *ngIf="instagramLink" class="p-2" href="{{instagramLink}}">
+        <span class="fa fa-instagram"></span>
+      </a>
+      <a *ngIf="youTubeLink" class="p-2" href="{{youTubeLink}}">
+        <span class="fa fa-youtube-play"></span>
+      </a>
     </p>
   </div>
 </div>
