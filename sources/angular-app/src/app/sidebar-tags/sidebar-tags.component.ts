@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar-tags',
@@ -6,11 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebar-tags.component.scss']
 })
 export class SidebarTagsComponent implements OnInit {
+  @Input() tags;
+  public tagsItems;
 
   constructor() {
   }
 
   ngOnInit(): void {
+    this.tagsItems = this.tags.items.item;
   }
 
 }

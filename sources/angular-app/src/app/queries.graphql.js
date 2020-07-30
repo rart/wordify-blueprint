@@ -15,74 +15,7 @@
  */
 
 // language=GraphQL
-export default `
-
-  fragment byUrlQueryHomepage on page_entry  {
-    pageTitle_s
-    pageDescription_s
-    bios_o {
-      item {
-        key
-        component {
-          ...byUrlQueryBioFragment
-        }
-      }
-    }
-    slider_o {
-      item {
-        key
-        component {
-          ...byUrlQueryContentItemFields
-          ...on component_slider {
-            ...byUrlQuerySlider
-          }
-        }
-      }
-    }
-  }
-  
-  fragment byUrlQueryAboutPage on page_about {
-    pageTitle_s
-    pageDescription_s
-    headline_s
-    bios_o {
-      item {
-        key
-        component {
-          ...byUrlQueryBioFragment
-        }
-      }
-    }
-    content_o {
-      item {
-        key
-        component {
-          ...on component_rich_text {
-            ...byUrlQueryRichText
-          }
-          ...on component_image {
-            ...byUrlQueryImage
-          }
-          ...on component_responsive_columns {
-            ...byUrlQueryResponsiveColumns
-          }
-        }
-      }
-    }
-  }
-
-  fragment byUrlQueryContactPage on page_contact {
-    pageTitle_s
-    pageDescription_s
-
-  }
-
-  fragment byUrlQueryCategoryPage on page_category {
-    pageTitle_s
-    pageDescription_s
-
-  }
-
+const commonFragments = `
   fragment byUrlQueryPostPage on page_post {
     ...byUrlQueryContentItemFields
     slug: localId(transform: "storeUrlToRenderUrl")
@@ -115,45 +48,23 @@ export default `
         }
       }
     }
-  }
-
-  fragment byUrlQueryPost on component_post {
-    ...byUrlQueryContentItemFields
-    slug: localId(transform: "storeUrlToRenderUrl")
-    pageTitle_s
-    pageDescription_s
-    blurb_t
-    headline_s
-    mainImage_s
-    content_o {
+    categories_o {
       item {
-        key
-        component {
-          ...on component_rich_text {
-            ...byUrlQueryRichText
-          }
-          ...on component_image {
-            ...byUrlQueryImage
-          }
-          ...on component_responsive_columns {
-            ...byUrlQueryResponsiveColumns
-          }
-        }
+        key(filter: {or: $categoriesFilter})
+        value_smv
       }
     }
-    authorBio_o {
+    tags_o {
       item {
-        key
-        component {
-          ...byUrlQueryBioFragment
-        }
+        value_smv
+        key(filter: {or: $tagsFilter})
       }
     }
   }
 
   fragment byUrlQueryContentItemFields on ContentItem {
     guid: objectId
-    path: localId
+    path: localId(filter: {not: [{equals: $exclude}]})
     contentTypeId: content__type
     dateCreated: createdDate_dt
     dateModified: lastModifiedDate_dt
@@ -209,6 +120,111 @@ export default `
       }
     }
   }
+`
+
+// language=GraphQL
+export default `
+  ${commonFragments}
+
+  fragment byUrlQueryHomepage on page_entry  {
+    pageTitle_s
+    pageDescription_s
+    bios_o {
+      item {
+        key
+        component {
+          ...byUrlQueryBioFragment
+        }
+      }
+    }
+    slider_o {
+      item {
+        key
+        component {
+          ...byUrlQueryContentItemFields
+          ...on component_slider {
+            ...byUrlQuerySlider
+          }
+        }
+      }
+    }
+  }
+
+  fragment byUrlQueryAboutPage on page_about {
+    pageTitle_s
+    pageDescription_s
+    headline_s
+    bios_o {
+      item {
+        key
+        component {
+          ...byUrlQueryBioFragment
+        }
+      }
+    }
+    content_o {
+      item {
+        key
+        component {
+          ...on component_rich_text {
+            ...byUrlQueryRichText
+          }
+          ...on component_image {
+            ...byUrlQueryImage
+          }
+          ...on component_responsive_columns {
+            ...byUrlQueryResponsiveColumns
+          }
+        }
+      }
+    }
+  }
+
+  fragment byUrlQueryContactPage on page_contact {
+    pageTitle_s
+    pageDescription_s
+    message_t
+    headline_s
+  }
+
+  fragment byUrlQueryCategoryPage on page_category {
+    pageTitle_s
+    pageDescription_s
+  }
+
+  fragment byUrlQueryPost on component_post {
+    ...byUrlQueryContentItemFields
+    slug: localId(transform: "storeUrlToRenderUrl")
+    pageTitle_s
+    pageDescription_s
+    blurb_t
+    headline_s
+    mainImage_s
+    content_o {
+      item {
+        key
+        component {
+          ...on component_rich_text {
+            ...byUrlQueryRichText
+          }
+          ...on component_image {
+            ...byUrlQueryImage
+          }
+          ...on component_responsive_columns {
+            ...byUrlQueryResponsiveColumns
+          }
+        }
+      }
+    }
+    authorBio_o {
+      item {
+        key
+        component {
+          ...byUrlQueryBioFragment
+        }
+      }
+    }
+  }
 
   fragment byUrlQuerySlider on component_slider {
     ...byUrlQueryContentItemFields
@@ -242,6 +258,9 @@ export default `
     $includePosts: Boolean = true
     $postsLimit: Int = 8
     $postsOffset: Int = 0
+    $exclude: String = ""
+    $categoriesFilter: [TextFilters!] = []
+    $tagsFilter: [TextFilters!] = []
   ) {
     content: contentItems {
       total
@@ -276,12 +295,73 @@ export default `
         }
       }
     }
-    posts: component_post(limit: $postsLimit, offset: $postsOffset) @include(if: $includePosts) {
+    levelDescriptors: component_level__descriptor {
+      items {
+        siteTitle_s
+        file__name
+        websiteShortname_s
+        socialLinks_o {
+          item {
+            socialNetwork_s
+            label_s
+            url_s
+          }
+        }
+      }
+    }
+    posts: component_post(
+      limit: $postsLimit,
+      offset: $postsOffset,
+      sortOrder: DESC,
+      sortBy: "lastModifiedDate_dt"
+    ) @include(if: $includePosts) {
       total
       items {
         ...byUrlQueryPost
       }
     }
+    taxonomies: taxonomy {
+      total
+      items {
+        guid: objectId
+        path: localId
+        contentTypeId: content__type
+        dateCreated: createdDate_dt
+        dateModified: lastModifiedDate_dt
+        label: internal__name
+        items {
+          item {
+            key
+            value
+            image_s
+          }
+        }
+      }
+    }
   }
-  
+`;
+
+//language=GraphQL
+export const postsQuery = `
+  ${commonFragments}
+
+  query postsQuery(
+    $limit: Int = 10
+    $offset: Int = 0
+    $exclude: String = ""
+    $categoriesFilter: [TextFilters!] = []
+    $tagsFilter: [TextFilters!] = []
+  ) {
+    posts: page_post(
+      limit: $limit,
+      offset: $offset,
+      sortOrder: DESC,
+      sortBy: "lastModifiedDate_dt"
+    ) {
+      total
+      items {
+        ...byUrlQueryPostPage
+      }
+    }
+  }
 `;

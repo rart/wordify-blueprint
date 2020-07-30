@@ -12,6 +12,8 @@ export class HomeComponent implements OnInit {
   public numOfPages;
   public pageNumber;
   public bios_o;
+  public categories_o;
+  public tags_o;
 
   constructor() {
   }
@@ -35,5 +37,7 @@ export class HomeComponent implements OnInit {
     this.bios_o = this.state.model.bios_o;
     this.numOfPages = Math.ceil(this.state.meta.posts.total / this.state.meta.posts.limit);
     this.pageNumber = 1;
+    this.categories_o = this.state.taxonomies.filter(taxonomy => taxonomy.craftercms.path.endsWith('categories.xml'))[0];
+    this.tags_o = this.state.taxonomies.filter(taxonomy => taxonomy.craftercms.path.endsWith('tags.xml'))[0];
   }
 }

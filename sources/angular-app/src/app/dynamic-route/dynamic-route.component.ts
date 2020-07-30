@@ -24,10 +24,12 @@ export class DynamicRouteComponent implements OnInit {
       .subscribe(({ data }) => {
         const model = parseDescriptor(data.content.items?.[0]) as ContentInstance;
         const posts = parseDescriptor(data.posts.items);
+        const taxonomies = parseDescriptor(data.taxonomies.items);
         this.contentTypeId = model.craftercms.contentTypeId;
         this.state = {
           model,
           posts,
+          taxonomies,
           meta: {
             posts: {
               total: data.posts.total,
