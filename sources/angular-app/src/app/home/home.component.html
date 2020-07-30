@@ -1,0 +1,65 @@
+<section class="site-section pt-5 pb-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <app-slider *ngFor="let slider of slider_o;" [slider]="slider"></app-slider>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="site-section py-sm">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h2 class="mb-4">Latest Posts</h2>
+      </div>
+    </div>
+    <div class="row blog-entries">
+      <div class="col-md-12 col-lg-8 main-content">
+        <div class="row">
+          <div *ngFor="let post of posts_o;" class="col-md-6">
+            <app-post-card [model]="post"></app-post-card>
+          </div>
+        </div>
+        <div *ngIf="numOfPages > 1" class="row mt-5">
+          <div class="col-md-12 text-center">
+            <nav aria-label="Page navigation" class="text-center">
+              <ul class="pagination">
+                <li *ngIf="pageNumber > 1" class="page-item">
+                  <a class="page-link" href="#">&lt;</a>
+                </li>
+
+                <li
+                  *ngFor="let i = index; let number of [].constructor(numOfPages)"
+                  [ngClass]="{'active': i + 1 === pageNumber}"
+                  class="page-item"
+                >
+                  <a [queryParams]="{page: i + 1}" [routerLink]="" class="page-link">
+                    {{i + 1 }}
+                  </a>
+                </li>
+
+                <li *ngIf="pageNumber < numOfPages" class="page-item">
+                  <a class="page-link" href="#">&gt;</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-4 sidebar">
+
+        <app-sidebar-search></app-sidebar-search>
+
+        <app-sidebar-bios [bios]="bios_o"></app-sidebar-bios>
+
+        <app-popular-posts-aside [posts]="posts_o"></app-popular-posts-aside>
+
+        <app-sidebar-categories></app-sidebar-categories>
+
+        <app-sidebar-tags></app-sidebar-tags>
+
+      </div>
+    </div>
+  </div>
+</section>
