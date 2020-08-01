@@ -16,13 +16,14 @@ import { SearchFormComponent } from './search-form/search-form.component';
 import { FormsModule } from '@angular/forms';
 import { SidebarBiosComponent } from './sidebar-bios/sidebar-bios.component';
 import { BioComponent } from './bio/bio.component';
-import { PopularPostsAsideComponent } from './popular-posts-aside/popular-posts-aside.component';
+import { RecentPostsAsideComponent } from './popular-posts-aside/recent-posts-aside.component';
 import { SidebarCategoriesComponent } from './sidebar-categories/sidebar-categories.component';
 import { SidebarTagsComponent } from './sidebar-tags/sidebar-tags.component';
 import { CategoryComponent } from './category/category.component';
 import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
 import { PostComponent } from './post/post.component';
+import { SidebarTaxonomiesComponent } from './sidebar-taxonomies/sidebar-taxonomies.component';
 
 @NgModule({
   declarations: [
@@ -38,13 +39,14 @@ import { PostComponent } from './post/post.component';
     SearchFormComponent,
     SidebarBiosComponent,
     BioComponent,
-    PopularPostsAsideComponent,
+    RecentPostsAsideComponent,
     SidebarCategoriesComponent,
     SidebarTagsComponent,
     CategoryComponent,
     ContactComponent,
     AboutComponent,
-    PostComponent
+    PostComponent,
+    SidebarTaxonomiesComponent
   ],
   imports: [
     BrowserModule,
