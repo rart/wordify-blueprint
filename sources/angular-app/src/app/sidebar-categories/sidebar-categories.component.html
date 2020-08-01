@@ -1,10 +1,6 @@
-<div class="sidebar-box">
-  <h3 class="heading">
-    Categories
-  </h3>
-  <ul class="categories">
-    <li *ngFor="let category of categoriesItems">
-      <a href="/category/{{category.key}}">{{category.value}}</a>
-    </li>
-  </ul>
-</div>
+<app-sidebar-taxonomies
+  [title] = "'Categories'"
+  [baseUrl] = "'/category'"
+  [listClass] = "'categories'"
+  [filter] = "filter"
+></app-sidebar-taxonomies>

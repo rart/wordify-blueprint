@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import Utils from '../utils';
 
 @Component({
   selector: 'app-sidebar-tags',
@@ -6,14 +7,13 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./sidebar-tags.component.scss']
 })
 export class SidebarTagsComponent implements OnInit {
-  @Input() tags;
-  public tagsItems;
+  public filter;
 
   constructor() {
   }
 
   ngOnInit(): void {
-    this.tagsItems = this.tags.items.item;
+    this.filter = Utils.createTaxonomyFilter('tags.xml');
   }
 
 }

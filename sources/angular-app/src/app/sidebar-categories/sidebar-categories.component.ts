@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import Utils from '../utils';
 
 @Component({
   selector: 'app-sidebar-categories',
@@ -6,14 +7,12 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./sidebar-categories.component.scss']
 })
 export class SidebarCategoriesComponent implements OnInit {
-  @Input() categories;
-  public categoriesItems;
+  public filter;
 
-  constructor() {
-  }
+  constructor() {}
 
   ngOnInit(): void {
-    this.categoriesItems = this.categories.items.item;
+    this.filter = Utils.createTaxonomyFilter('categories.xml');
   }
 
 }

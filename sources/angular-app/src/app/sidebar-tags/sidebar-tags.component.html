@@ -1,10 +1,6 @@
-<div class="sidebar-box">
-  <h3 class="heading">
-    Tags
-  </h3>
-  <ul class="tags clearfix">
-    <li *ngFor="let tag of tagsItems">
-      <a href="/tag/{{tag.key}}">{{tag.value}}</a>
-    </li>
-  </ul>
-</div>
+<app-sidebar-taxonomies
+  [title] = "'Tags'"
+  [baseUrl] = "'/tag'"
+  [listClass] = "'tags'"
+  [filter] = "filter"
+></app-sidebar-taxonomies>

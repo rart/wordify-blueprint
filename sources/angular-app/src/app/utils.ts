@@ -28,4 +28,7 @@ export default class Utils {
       .replace(/(\/\/)/g, '/')
       .replace('post/', 'articles/');
   }
+  static createTaxonomyFilter(name) {
+    return (taxonomy => taxonomy.craftercms.path.includes(name));
+  }
 }
