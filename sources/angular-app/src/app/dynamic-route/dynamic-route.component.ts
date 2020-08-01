@@ -25,12 +25,21 @@ export class DynamicRouteComponent implements OnInit {
         const model = parseDescriptor(data.content.items?.[0]) as ContentInstance;
         const posts = parseDescriptor(data.posts.items);
         const taxonomies = parseDescriptor(data.taxonomies.items);
+        const levelDescriptor = data.levelDescriptors.items
+          .filter(levelDescriptor => levelDescriptor.file__name === 'crafter-level-descriptor.level.xml')
+          .map(levelDescriptor => levelDescriptor)[0];
+
         this.contentTypeId = model.craftercms.contentTypeId;
         this.state = {
           model,
           posts,
           taxonomies,
           meta: {
+            siteTitle: levelDescriptor.siteTitle_s,
+            socialLinks: levelDescriptor.socialLinks_o.item,
+            disqus: {
+              websiteShortname: levelDescriptor.websiteShortname_s
+            },
             posts: {
               total: data.posts.total,
               limit: 3,
@@ -38,6 +47,14 @@ export class DynamicRouteComponent implements OnInit {
             }
           }
         };
+
+        if (model) {
+          document.title = model.pageTitle_s ?? 'Wordify Crafter CMS';
+          if (model.pageDescription_s) {
+            const description = document.head.querySelector('meta[name="description"]');
+            description && description.setAttribute('content', model.pageDescription_s ?? '');
+          }
+        }
       });
   }
 
