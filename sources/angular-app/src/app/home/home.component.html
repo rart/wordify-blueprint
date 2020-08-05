@@ -21,28 +21,15 @@
             <app-post-card [model]="post"></app-post-card>
           </div>
         </div>
-        <div *ngIf="numOfPages > 1" class="row mt-5">
+        <div *ngIf="paginationData.pageCount > 1" class="row mt-5">
           <div class="col-md-12 text-center">
             <nav aria-label="Page navigation" class="text-center">
-              <ul class="pagination">
-                <li *ngIf="pageNumber > 1" class="page-item">
-                  <a class="page-link" href="#">&lt;</a>
-                </li>
-
-                <li
-                  *ngFor="let i = index; let number of [].constructor(numOfPages)"
-                  [ngClass]="{'active': i + 1 === pageNumber}"
-                  class="page-item"
-                >
-                  <a [queryParams]="{page: i + 1}" [routerLink]="" class="page-link">
-                    {{i + 1 }}
-                  </a>
-                </li>
-
-                <li *ngIf="pageNumber < numOfPages" class="page-item">
-                  <a class="page-link" href="#">&gt;</a>
-                </li>
-              </ul>
+              <app-pagination
+                [currentPage]="paginationData.currentPage"
+                [itemsPerPage]="paginationData.itemsPerPage"
+                [pageCount]="paginationData.pageCount"
+                [onPageChange]="onPageChange.bind(this)"
+              ></app-pagination>
             </nav>
           </div>
         </div>

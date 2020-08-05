@@ -61,5 +61,17 @@
         ></app-post-card>
       </div>
     </div>
+    <div *ngIf="paginationData.pageCount > 1" class="row mt-5">
+      <div class="col-md-12 text-center">
+        <nav aria-label="Page navigation" class="text-center">
+          <app-pagination
+            [currentPage]="paginationData.currentPage"
+            [itemsPerPage]="paginationData.itemsPerPage"
+            [pageCount]="paginationData.pageCount"
+            [onPageChange]="onPageChange.bind(this)"
+          ></app-pagination>
+        </nav>
+      </div>
+    </div>
   </div>
 </section>

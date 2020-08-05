@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ContentService } from '../content.service';
+import { defaultData } from '../pagination/pagination.component';
 
 @Component({
   selector: 'app-about',
@@ -10,13 +12,30 @@ export class AboutComponent implements OnInit {
   public posts_o;
   public bios_o;
   public headline_s;
-  constructor() {
+  public numOfPages;
+  public paginationData = defaultData;
+
+  constructor(private contentService: ContentService) {
+  }
+
+  getPosts(): void {
+    this.contentService.getPosts(null, null, null, this.paginationData)
+      .subscribe(response => {
+        this.paginationData.pageCount = Math.ceil(response.total / this.paginationData.itemsPerPage);
+        this.posts_o = response.items;
+      });
+  }
+
+  onPageChange(page: number) {
+    this.paginationData.currentPage = page;
+    this.getPosts();
   }
 
   ngOnInit(): void {
     this.headline_s = this.state.model.headline_s;
-    this.posts_o = this.state.posts;
     this.bios_o = this.state.model.bios_o;
-  }
+    this.paginationData.itemsPerPage = this.state.meta.posts.limit;
 
+    this.getPosts();
+  }
 }
