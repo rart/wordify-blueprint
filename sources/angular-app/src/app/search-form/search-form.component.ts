@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-form',
@@ -9,17 +10,26 @@ export class SearchFormComponent implements OnInit {
   @Input() classes;
   @Input() placeholder;
   @Input() id;
-  public keyword;
+  public keyword = '';
 
-  constructor() {
+  constructor(private actRoute: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit(): void {
-
+    this.actRoute.queryParams.subscribe(parameters =>
+      this.keyword = parameters.q
+    );
   }
 
   onEnter(): void {
-    console.log(this.keyword);
+    this.router.navigate(
+      ['/search'],
+      {
+        queryParams: {
+          q: this.keyword
+        }
+      }
+    );
   }
 
 }

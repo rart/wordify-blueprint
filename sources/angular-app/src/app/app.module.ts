@@ -26,6 +26,7 @@ import { PostComponent } from './post/post.component';
 import { SidebarTaxonomiesComponent } from './sidebar-taxonomies/sidebar-taxonomies.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { CategoryCard } from './category-card/category-card.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { CategoryCard } from './category-card/category-card.component';
     PostComponent,
     SidebarTaxonomiesComponent,
     PaginationComponent,
-    CategoryCard
+    CategoryCard,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

@@ -6,8 +6,9 @@ import Utils from './utils';
 import { Observable } from 'rxjs';
 import { NavItem } from './header/header.component';
 import byUrlQuery, { postsQuery } from './queries.graphql';
-import { parseDescriptor } from '@craftercms/content';
 import { Footer } from './footer/footer.component';
+import { createQuery, search } from '@craftercms/search';
+import { parseDescriptor } from '@craftercms/content';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,7 @@ export class ContentService {
       this.graphqlServer += `?crafterSite=${Utils.siteName()}`;
     }
   }
+
   fetchQuery(operation, variables?) {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'
@@ -62,7 +64,7 @@ export class ContentService {
         url: `.*${url === '/' ? 'website/index' : url}.*`,
         ...options
       }
-    )
+    );
   }
 
   getFooter(): Observable<Footer> {
@@ -111,14 +113,14 @@ export class ContentService {
     const queryVariables = {
       categoriesFilter,
       tagsFilter,
-      exclude: exclude??"",
-      ... (
+      exclude: exclude ?? '',
+      ...(
         paginationData ? {
           limit: paginationData.itemsPerPage,
           offset: (paginationData.currentPage * paginationData.itemsPerPage)
         } : {}
       )
-    }
+    };
 
     return this.fetchQuery(
       { text: postsQuery },
@@ -126,9 +128,9 @@ export class ContentService {
     ).pipe(map((response: any) => ({
       items: parseDescriptor(response.data.posts.items),
       total: response.data.posts.total,
-      ... ( paginationData ? {
-        pageCount: Math.ceil(response.data.posts.total/paginationData.itemsPerPage)
-      }: {})
+      ...(paginationData ? {
+        pageCount: Math.ceil(response.data.posts.total / paginationData.itemsPerPage)
+      } : {})
     })));
   }
 
@@ -155,5 +157,25 @@ export class ContentService {
         }
       }`
     }).pipe(map((response: any) => parseDescriptor(response.data.taxonomy.items)));
+  }
+
+  searchPosts(query: string, size: number = 1, from: number = 0): any {
+    const contentTypes = ['/page/post'];
+
+    return search(
+      createQuery('elasticsearch', {
+        query: {
+          'bool': {
+            'filter': [
+              { 'bool': { 'should': contentTypes.map(id => ({ 'match': { 'content-type': id } })) } },
+              { 'multi_match': { 'query': query, 'type': 'phrase_prefix' } }
+            ]
+          }
+        },
+        size,
+        from
+      }),
+      Utils.crafterConfig()
+    )
   }
 }
