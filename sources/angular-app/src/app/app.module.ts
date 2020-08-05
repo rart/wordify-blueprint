@@ -24,6 +24,8 @@ import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
 import { PostComponent } from './post/post.component';
 import { SidebarTaxonomiesComponent } from './sidebar-taxonomies/sidebar-taxonomies.component';
+import { PaginationComponent } from './pagination/pagination.component';
+import { CategoryCard } from './category-card/category-card.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { SidebarTaxonomiesComponent } from './sidebar-taxonomies/sidebar-taxonom
     ContactComponent,
     AboutComponent,
     PostComponent,
-    SidebarTaxonomiesComponent
+    SidebarTaxonomiesComponent,
+    PaginationComponent,
+    CategoryCard
   ],
   imports: [
     BrowserModule,
