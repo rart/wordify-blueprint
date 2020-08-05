@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ContentService } from '../content.service';
 import { parseDescriptor } from '@craftercms/content';
 import { ContentInstance } from '@craftercms/models';
@@ -10,7 +10,7 @@ import { ContentInstance } from '@craftercms/models';
   styleUrls: ['./dynamic-route.component.scss']
 })
 export class DynamicRouteComponent implements OnInit {
-  constructor(private router: Router, private contentService: ContentService) {}
+  constructor(private router: Router, private contentService: ContentService, private actRoute: ActivatedRoute) {}
   private url: string = this.getUrlWithoutParams();
   public state;
   public contentTypeId;
@@ -61,7 +61,12 @@ export class DynamicRouteComponent implements OnInit {
   getUrlWithoutParams() {
     let urlTree = this.router.parseUrl(this.router.url);
     urlTree.queryParams = {};
-    return urlTree.toString();
+    let routePath = this.actRoute.routeConfig.path;
+    const url = routePath.includes(':')
+      ? routePath.substring(0, routePath.indexOf(':') -1)
+      : urlTree.toString();
+
+    return url;
   }
 
 }
