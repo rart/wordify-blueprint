@@ -45,7 +45,7 @@ export class PostComponent implements OnInit {
   ngOnInit(): void {
     this.mainImage_s = this.state.model.mainImage_s;
     this.headline_s = this.state.model.headline_s;
-    this.dateCreated = this.state.model.dateCreated;
+    this.dateCreated = this.state.model.craftercms.dateCreated;
     this.bios_o = this.state.model.authorBio_o;
     this.profilePic_s = this.state.model.authorBio_o?.[0]?.profilePic_s;
     this.name_s = this.state.model.authorBio_o?.[0]?.name_s;

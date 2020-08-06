@@ -13,8 +13,9 @@
           • <span class="ml-2"><span class="fa fa-comments"></span>3</span>
         </div>
         <h1>{{headline_s}}</h1>
-        <a class="category mb-5" href="/">Food</a>
-        <a class="category mb-5" href="/">Travel</a>
+        <a class="category mb-5" *ngFor="let category of categories_o" href="/category/{{category.key}}">
+          {{category.value_smv}}
+        </a>
 
         <div class="post-content-body">
           <app-content-type *ngFor="let component of content_o" [model]="component"></app-content-type>
@@ -22,10 +23,16 @@
 
         <div class="pt-5">
           <div>
-            Categories: <a href="/">Food</a>, <a href="/">Travel</a>
+            Categories:
+            <a *ngFor="let category of categories_o; let i=index" href="/category/{{category.key}}">
+              {{category.value_smv}}{{ i < categories_o.length - 1 ? ',' : '' }}
+            </a>
           </div>
           <div>
-            Tags: <a href="/">#manila</a>, <a href="/">#asia</a>
+            Tags:
+            <a *ngFor="let tag of tags_o; let i=index" href="/tag/{{tag.key}}">
+              #{{tag.value_smv}}{{ i < tags_o.length - 1 ? ',' : '' }}
+            </a>
           </div>
         </div>
 

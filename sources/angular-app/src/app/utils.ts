@@ -26,7 +26,8 @@ export default class Utils {
       .replace(/(\/site\/components)|(index\.xml)/g, '')
       .replace(/(\/site\/website)|(index\.xml)/g, '')
       .replace(/(\/\/)/g, '/')
-      .replace('post/', 'articles/');
+      .replace('post/', 'articles/')
+      .replace('.xml', '/');
   }
 
   static crafterConfig() {
