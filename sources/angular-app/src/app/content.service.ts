@@ -178,4 +178,29 @@ export class ContentService {
       Utils.crafterConfig()
     )
   }
+
+  getLevelDescriptor(): Observable<any> {
+    return this.fetchQuery({
+      text: `query LevelDescriptor {
+        component_level__descriptor {
+          items {
+            siteTitle_s
+            file__name
+            websiteShortname_s
+            socialLinks_o {
+              item {
+                socialNetwork_s
+                label_s
+                url_s
+              }
+            }
+          }
+        }
+      }`
+    }).pipe(
+      map((response: any) =>
+        parseDescriptor(response.data.component_level__descriptor.items[0])
+      )
+    );
+  }
 }

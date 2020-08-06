@@ -3,10 +3,9 @@
     <div class="container">
       <div class="row">
         <div class="col-9 social">
-          <a href="#"><span class="fa fa-twitter"></span></a>
-          <a href="#"><span class="fa fa-facebook"></span></a>
-          <a href="#"><span class="fa fa-instagram"></span></a>
-          <a href="#"><span class="fa fa-youtube-play"></span></a>
+          <a *ngFor="let link of socialLinks" href="{{link.url_s}}">
+            <span class="fa fa-{{link.socialNetwork_s}}"></span>
+          </a>
         </div>
         <div class="col-3 search-top">
           <app-search-form

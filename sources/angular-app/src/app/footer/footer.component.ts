@@ -22,6 +22,7 @@ export interface Footer {
 })
 export class FooterComponent implements OnInit {
   public footer: Footer;
+  public socialLinks = [];
 
   constructor(private contentService: ContentService) { }
 
@@ -30,6 +31,11 @@ export class FooterComponent implements OnInit {
       .subscribe(response => {
         this.footer = response;
       });
+
+    this.contentService.getLevelDescriptor()
+      .subscribe(levelDescriptor => {
+        this.socialLinks = levelDescriptor.socialLinks_o;
+      })
   }
 
 }
