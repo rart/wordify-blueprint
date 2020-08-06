@@ -31,6 +31,7 @@ export class SearchComponent implements OnInit {
   public results = [];
   public paginationData = defaultData;
   public keyword = '';
+  public bios_o;
 
   constructor(private contentService: ContentService, private actRoute: ActivatedRoute){}
 
@@ -60,8 +61,8 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.bios_o = this.state.model.bios_o;
     this.paginationData.itemsPerPage = this.state.meta.posts.limit;
-
     this.actRoute.queryParams.subscribe(parameters => {
       this.keyword = parameters.q;
       this.getResults();
