@@ -35,7 +35,7 @@ export class PostCardComponent implements OnInit {
     this.type = this.format;
     this.mainImage_s = this.model.mainImage_s;
     this.headline_s = this.model.headline_s;
-    this.dateModified = this.model.craftercms.dateModified;
+    this.dateModified = Utils.formatDate(this.model.craftercms.dateModified);
     this.blurb_t = this.model.blurb_t;
     this.authorAvatarUrl = this.model.authorBio_o[0].profilePic_s;
     this.authorName = this.model.authorBio_o[0].name_s;

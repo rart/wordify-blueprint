@@ -40,4 +40,8 @@ export default class Utils {
   static createTaxonomyFilter(name) {
     return (taxonomy => taxonomy.craftercms.path.includes(name));
   }
+
+  static formatDate(date: string) {
+    return new Date(date).toLocaleDateString()
+  }
 }
