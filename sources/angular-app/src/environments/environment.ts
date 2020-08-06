@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  baseUrl: 'http://localhost:8080',
   graphqlServer: '//localhost:8080/api/1/site/graphql',
   crafterSiteId: null
 };
