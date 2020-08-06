@@ -15,6 +15,7 @@ export interface NavItem {
 })
 export class HeaderComponent implements OnInit {
   public nav: NavItem[] = [];
+  public siteTitle;
   public socialLinks = [];
   constructor(private contentService: ContentService) {
   }
@@ -27,6 +28,8 @@ export class HeaderComponent implements OnInit {
 
     this.contentService.getLevelDescriptor()
       .subscribe(levelDescriptor => {
+        console.log(levelDescriptor);
+        this.siteTitle = levelDescriptor.siteTitle_s;
         this.socialLinks = levelDescriptor.socialLinks_o;
       })
   }
