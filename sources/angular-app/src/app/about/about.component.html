@@ -6,6 +6,10 @@
         <div class="row">
           <div class="col-md-12">
             <h2>{{headline_s}}</h2>
+
+            <div class="mb-5" *ngFor="let component of content_o">
+              <app-content-type [model]="component"></app-content-type>
+            </div>
           </div>
         </div>
 

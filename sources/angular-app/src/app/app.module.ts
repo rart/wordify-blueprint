@@ -27,6 +27,11 @@ import { SidebarTaxonomiesComponent } from './sidebar-taxonomies/sidebar-taxonom
 import { PaginationComponent } from './pagination/pagination.component';
 import { CategoryCard } from './category-card/category-card.component';
 import { SearchComponent } from './search/search.component';
+import { ContentTypeComponent } from './content-type/content-type.component';
+import { ImageComponent } from './image/image.component';
+import { ResponsiveColumnsComponent } from './responsive-columns/responsive-columns.component';
+import { RichTextComponent } from './rich-text/rich-text.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +57,12 @@ import { SearchComponent } from './search/search.component';
     SidebarTaxonomiesComponent,
     PaginationComponent,
     CategoryCard,
-    SearchComponent
+    SearchComponent,
+    ContentTypeComponent,
+    ImageComponent,
+    ResponsiveColumnsComponent,
+    RichTextComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

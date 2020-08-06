@@ -19,6 +19,7 @@ export class PostComponent implements OnInit {
   public categories_o = [];
   public tags_o = [];
   public paginationData;
+  public content_o;
 
   constructor(private contentService: ContentService) {
   }
@@ -51,6 +52,7 @@ export class PostComponent implements OnInit {
     this.path = this.state.model.craftercms.path;
     this.categories_o = this.state.model.categories_o;
     this.tags_o = this.state.model.tags_o;
+    this.content_o = this.state.model.content_o;
     this.paginationData = {
       currentPage: 0,
       itemsPerPage: this.state.meta.posts.limit,

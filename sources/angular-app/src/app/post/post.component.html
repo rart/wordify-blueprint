@@ -17,6 +17,7 @@
         <a class="category mb-5" href="/">Travel</a>
 
         <div class="post-content-body">
+          <app-content-type *ngFor="let component of content_o" [model]="component"></app-content-type>
         </div>
 
         <div class="pt-5">

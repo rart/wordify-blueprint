@@ -12,6 +12,7 @@ export class AboutComponent implements OnInit {
   public posts_o;
   public bios_o;
   public headline_s;
+  public content_o;
   public numOfPages;
   public paginationData = defaultData;
 
@@ -34,6 +35,7 @@ export class AboutComponent implements OnInit {
   ngOnInit(): void {
     this.headline_s = this.state.model.headline_s;
     this.bios_o = this.state.model.bios_o;
+    this.content_o = this.state.model.content_o;
     this.paginationData.itemsPerPage = this.state.meta.posts.limit;
 
     this.getPosts();
