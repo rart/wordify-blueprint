@@ -8,26 +8,48 @@
     <div class="row blog-entries">
       <div class="col-md-12 col-lg-8 main-content">
 
-        <form action="#" method="post">
+        <form (ngSubmit)="handleSubmit()">
           <div class="row">
             <div class="col-md-12 form-group">
               <label htmlFor="name">Name</label>
-              <input class="form-control " id="name" type="text" />
+              <input
+                class="form-control "
+                id="name"
+                name="name"
+                type="text"
+                [(ngModel)]="formData.name"/>
             </div>
             <div class="col-md-12 form-group">
               <label htmlFor="phone">Phone</label>
-              <input class="form-control " id="phone" type="text" />
+              <input
+                class="form-control "
+                id="phone"
+                name="phone"
+                type="text"
+                [(ngModel)]="formData.phone"
+              />
             </div>
             <div class="col-md-12 form-group">
               <label htmlFor="email">Email</label>
-              <input class="form-control " id="email" type="email" />
+              <input
+                class="form-control "
+                id="email"
+                name="email"
+                type="email"
+                [(ngModel)]="formData.email"
+              />
             </div>
           </div>
           <div class="row">
             <div class="col-md-12 form-group">
               <label htmlFor="message">Write Message</label>
               <textarea
-                class="form-control " cols="30" id="message" name="message" rows="8"
+                class="form-control "
+                cols="30"
+                id="message"
+                name="message"
+                rows="8"
+                [(ngModel)]="formData.message"
               ></textarea>
             </div>
           </div>
@@ -62,4 +84,10 @@
 
     </div>
   </div>
+
+  <app-toast
+    [display]="toastData.display"
+    [type]="toastData.type"
+    [text]="toastData.text"
+  ></app-toast>
 </section>

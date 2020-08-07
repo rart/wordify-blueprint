@@ -32,6 +32,7 @@ import { ImageComponent } from './image/image.component';
 import { ResponsiveColumnsComponent } from './responsive-columns/responsive-columns.component';
 import { RichTextComponent } from './rich-text/rich-text.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ToastComponent } from './toast/toast.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ImageComponent,
     ResponsiveColumnsComponent,
     RichTextComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ToastComponent
   ],
   imports: [
     BrowserModule,

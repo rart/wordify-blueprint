@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../environments/environment';
-import { map } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import Utils from './utils';
 import { Observable } from 'rxjs';
 import { NavItem } from './header/header.component';
@@ -9,6 +9,7 @@ import byUrlQuery, { postsQuery } from './queries.graphql';
 import { Footer } from './footer/footer.component';
 import { createQuery, search } from '@craftercms/search';
 import { parseDescriptor } from '@craftercms/content';
+import { SDKService } from '@craftercms/classes';
 
 @Injectable({
   providedIn: 'root'
@@ -202,5 +203,14 @@ export class ContentService {
         parseDescriptor(response.data.component_level__descriptor.items[0])
       )
     );
+  }
+
+  submitContactData(data): Observable<any> {
+    return SDKService.httpPost(
+      '/api/contactus.json',
+      data
+    ).pipe(
+      catchError(error => [error])
+    )
   }
 }
