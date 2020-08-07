@@ -10,7 +10,13 @@ import { ContentInstance } from '@craftercms/models';
   styleUrls: ['./dynamic-route.component.scss']
 })
 export class DynamicRouteComponent implements OnInit {
-  constructor(private router: Router, private contentService: ContentService, private actRoute: ActivatedRoute) {}
+  constructor(private router: Router, private contentService: ContentService, private actRoute: ActivatedRoute) {
+    // since router path is `**`, router doesn't load view changes
+    // this disables route reuse for the views to load properly
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
+  }
   private url: string = this.getUrlWithoutParams();
   public state;
   public contentTypeId;

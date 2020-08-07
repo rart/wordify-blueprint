@@ -28,7 +28,6 @@ export class HeaderComponent implements OnInit {
 
     this.contentService.getLevelDescriptor()
       .subscribe(levelDescriptor => {
-        console.log(levelDescriptor);
         this.siteTitle = levelDescriptor.siteTitle_s;
         this.socialLinks = levelDescriptor.socialLinks_o;
       })
