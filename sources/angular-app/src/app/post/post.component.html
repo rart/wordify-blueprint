@@ -10,7 +10,10 @@
             {{name_s}}
           </span>
           • <span class="mr-2">{{dateCreated}}</span>
-          • <span class="ml-2"><span class="fa fa-comments"></span>3</span>
+          • <span class="ml-2">
+              <span class="fa fa-comments"></span>
+                <app-comments-count *ngIf="websiteShortname" [id]="postId" [websiteShortname]="websiteShortname"></app-comments-count>
+              </span>
         </div>
         <h1>{{headline_s}}</h1>
         <a class="category mb-5" *ngFor="let category of categories_o" href="/category/{{category.key}}">
@@ -36,6 +39,9 @@
           </div>
         </div>
 
+        <div class="mt-5">
+          <app-comments *ngIf="websiteShortname" [id]="postId" [websiteShortname]="websiteShortname"></app-comments>
+        </div>
       </div>
 
       <div class="col-md-12 col-lg-4 sidebar">

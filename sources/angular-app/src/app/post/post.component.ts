@@ -9,6 +9,7 @@ import Utils from '../utils';
 })
 export class PostComponent implements OnInit {
   @Input() state;
+  public postId;
   public mainImage_s;
   public headline_s;
   public posts_o = [];
@@ -21,6 +22,7 @@ export class PostComponent implements OnInit {
   public tags_o = [];
   public paginationData;
   public content_o;
+  public websiteShortname;
 
   constructor(private contentService: ContentService) {
   }
@@ -44,6 +46,7 @@ export class PostComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.postId = this.state.model.craftercms.id;
     this.mainImage_s = this.state.model.mainImage_s;
     this.headline_s = this.state.model.headline_s;
     this.dateCreated = Utils.formatDate(this.state.model.craftercms.dateCreated);
@@ -61,6 +64,11 @@ export class PostComponent implements OnInit {
     };
 
     this.getPosts();
+
+    this.contentService.getLevelDescriptor()
+      .subscribe(levelDescriptor => {
+        this.websiteShortname = levelDescriptor.websiteShortname_s??'DISQUS';
+      })
   }
 
 }

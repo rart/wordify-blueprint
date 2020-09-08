@@ -33,6 +33,8 @@ import { ResponsiveColumnsComponent } from './responsive-columns/responsive-colu
 import { RichTextComponent } from './rich-text/rich-text.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ToastComponent } from './toast/toast.component';
+import { CommentsComponent } from './comments/comments.component';
+import { CommentsCountComponent } from './comments-count/comments-count.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +66,9 @@ import { ToastComponent } from './toast/toast.component';
     ResponsiveColumnsComponent,
     RichTextComponent,
     NotFoundComponent,
-    ToastComponent
+    ToastComponent,
+    CommentsComponent,
+    CommentsCountComponent
   ],
   imports: [
     BrowserModule,
