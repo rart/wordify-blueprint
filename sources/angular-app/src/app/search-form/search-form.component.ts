@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-form',
@@ -12,13 +12,21 @@ export class SearchFormComponent implements OnInit {
   @Input() id;
   public keyword = '';
 
+  getKeyword(): string {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('q')??'';
+  }
+
   constructor(private actRoute: ActivatedRoute, private router: Router) {
+    this.keyword = this.getKeyword()
   }
 
   ngOnInit(): void {
-    this.actRoute.queryParams.subscribe(parameters =>
-      this.keyword = parameters.q
-    );
+    this.router.events.subscribe((val) => {
+      if (val instanceof NavigationEnd) {
+        this.keyword = this.getKeyword();
+      }
+    });
   }
 
   onEnter(): void {
