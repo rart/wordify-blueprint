@@ -11,6 +11,7 @@
       <div class="col-md-12 col-lg-8 main-content">
         <div class="row mb-5 mt-5">
           <div class="col-md-12">
+            <p>{{totalResults}} result{{totalResults === 0 || totalResults > 1 ? 's' : ''}} found.</p>
             <app-post-card
               *ngFor="let result of results;" [format]="'landscape'" [model]="result"
             ></app-post-card>

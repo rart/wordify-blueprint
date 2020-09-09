@@ -32,6 +32,7 @@ export class SearchComponent implements OnInit {
   public paginationData = defaultData;
   public keyword = '';
   public bios_o;
+  public totalResults = 0;
 
   constructor(private contentService: ContentService, private actRoute: ActivatedRoute){}
 
@@ -52,6 +53,7 @@ export class SearchComponent implements OnInit {
       .subscribe(response => {
         this.paginationData.pageCount = Math.ceil(response.total / this.paginationData.itemsPerPage);
         this.results = response.hits;
+        this.totalResults = response.total
       });
   }
 
