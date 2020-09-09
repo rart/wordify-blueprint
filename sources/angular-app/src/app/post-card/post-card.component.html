@@ -6,8 +6,10 @@
   >
     <a class="text {{classes?.innerWrapper}}" routerLink="{{slug}}">
       <div class="post-meta">
-        <span *ngIf="tags" class="category">{{tags}}</span>
-        <span *ngIf="tags"> • </span>
+        <div *ngIf="categories">
+          <span *ngFor="let category of categories" class="category">{{category.value_smv}}</span>
+          <span> • </span>
+        </div>
         <span class="mr-2">{{dateModified}}</span>
         <span *ngIf="numOfComments"> • </span>
         <span *ngIf="numOfComments" class="ml-2">

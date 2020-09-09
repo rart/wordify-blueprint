@@ -27,6 +27,7 @@ export class PostCardComponent implements OnInit {
   public authorAvatarUrl;
   public authorName;
   public slug;
+  public categories;
 
   constructor() {
   }
@@ -40,6 +41,7 @@ export class PostCardComponent implements OnInit {
     this.authorAvatarUrl = this.model.authorBio_o[0].profilePic_s;
     this.authorName = this.model.authorBio_o[0].name_s;
     this.slug = Utils.computeSlug(this.model.craftercms.path);
+    this.categories = this.model.categories_o;
   }
 
 }
