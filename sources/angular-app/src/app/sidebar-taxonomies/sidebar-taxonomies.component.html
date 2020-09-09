@@ -4,7 +4,7 @@
   </h3>
   <ul class="{{listClass}} clearfix">
     <li *ngFor="let taxonomy of filteredTaxonomies">
-      <a href="{{baseUrl}}/{{taxonomy.key}}">{{taxonomy.value}}</a>
+      <a routerLink="{{baseUrl}}/{{taxonomy.key}}">{{taxonomy.value}}</a>
     </li>
   </ul>
 </div>
