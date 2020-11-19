@@ -39,8 +39,8 @@ export default function (props) {
     }
   } = props;
   return (
-    <>
-      <div className="bio text-center" {...ice}>
+    <div className="sidebar-box" {...ice}>
+      <div className="bio text-center">
         <img src={profilePic_s} alt="" className="img-fluid" />
         <div className="bio-body">
           <h2>{name_s}</h2>
@@ -81,6 +81,6 @@ export default function (props) {
           </p>
         </div>
       </div>
-    </>
+    </div>
   );
 }

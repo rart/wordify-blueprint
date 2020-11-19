@@ -40,8 +40,6 @@ function SidebarBio(props) {
   const bio = props.model;
   const ice = usePencil(props);
   return (
-    <div className="sidebar-box">
-      <Bio ice={ice} model={bio} />
-    </div>
+    <Bio ice={ice} model={bio} />
   );
 }

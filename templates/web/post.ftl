@@ -76,13 +76,11 @@
                 </div>
                 <!-- END sidebar-box -->
                 <div class="bio-zone" style="float: left" <@studio.componentContainerAttr target="authorBio_o" component=postModel/>>
-                    <#if postModel.authorBio_o?? && postModel.authorBio_o.item??>
-                        <#list postModel.authorBio_o.item as component>
-                          <div class="sidebar-box">
-                              <@renderComponent component=component />
-                          </div>
-                        </#list>
-                    </#if>
+                  <#if postModel.authorBio_o?? && postModel.authorBio_o.item??>
+                    <#list postModel.authorBio_o.item as component>
+                      <@renderComponent component=component />
+                    </#list>
+                  </#if>
                 </div>
                 <!-- END sidebar-box -->
                 <div class="sidebar-box">

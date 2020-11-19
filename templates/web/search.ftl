@@ -79,9 +79,7 @@
               <div class="bio-zone" style="float: left" <@studio.componentContainerAttr target="bios_o" component=contentModel/>>
                 <#if contentModel.bios_o?? && contentModel.bios_o.item??>
                   <#list contentModel.bios_o.item as component>
-                    <div class="sidebar-box">
-                        <@renderComponent component=component />
-                    </div>
+                    <@renderComponent component=component />
                   </#list>
                 </#if>
               </div>
