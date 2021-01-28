@@ -18,7 +18,7 @@ import React from 'react';
 import { ContentType, Field, Model, RenderField } from '@craftercms/studio-guest';
 import contentTypeMap from '../shared/contentTypeMap';
 
-export default function (props) {
+function ResponsiveColumns(props) {
   const { model } = props;
   return (
     <Model model={model}>
@@ -57,3 +57,5 @@ export default function (props) {
     </Model>
   );
 }
+
+export default ResponsiveColumns;

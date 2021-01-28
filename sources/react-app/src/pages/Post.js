@@ -28,7 +28,7 @@ import Comments, { CommentsCount } from '../shared/Comments';
 import Paginate from '../shared/Paginate';
 import { usePosts } from '../shared/hooks';
 
-export default function (props) {
+function Post(props) {
   const {
     model,
     meta: {
@@ -195,3 +195,5 @@ export default function (props) {
     </BaseLayout>
   );
 }
+
+export default Post;

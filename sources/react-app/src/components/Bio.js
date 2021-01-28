@@ -17,7 +17,7 @@
 import React from 'react';
 import { Field, RenderField } from '@craftercms/studio-guest';
 
-export default function (props) {
+export default function Bio(props) {
   const {
     model,
     model: {

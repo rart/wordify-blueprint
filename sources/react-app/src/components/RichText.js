@@ -17,7 +17,7 @@
 import React from 'react';
 import { Model, RenderField } from '@craftercms/studio-guest';
 
-export default function (props) {
+function RichText(props) {
   const { model } = props;
   return (
     <Model model={model}>
@@ -30,3 +30,5 @@ export default function (props) {
     </Model>
   );
 }
+
+export default RichText;
