@@ -58,7 +58,13 @@ function PostCard(props) {
           className={`blog-entry ${classes?.root ?? ''}`}
         >
           <div className="img-container">
-            <RenderField component="img" model={model} target="src" fieldId="mainImage_s" alt={mainImageAlt_s} />
+            <RenderField
+              component="img"
+              model={model}
+              renderTarget="src"
+              fieldId="mainImage_s"
+              alt={mainImageAlt_s}
+            />
           </div>
           <div className="blog-content-body">
             <div className="post-meta">
@@ -93,7 +99,7 @@ function PostCard(props) {
             <RenderField
               model={model}
               fieldId="mainImage_s"
-              target="style.backgroundImage"
+              renderTarget="style.backgroundImage"
               format={(src) => `url(${src})`}
               className="image"
             />
@@ -120,7 +126,7 @@ function PostCard(props) {
         <Field component={Link} model={model} to={slug} className={classes?.root}>
           <RenderField
             component="img"
-            target="src"
+            renderTarget="src"
             model={model}
             fieldId="mainImage_s"
             className="mr-4"

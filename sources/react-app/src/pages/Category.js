@@ -115,8 +115,7 @@ function Category(props) {
   const {
     match,
     meta: {
-      siteTitle,
-      socialLinks
+      levelDescriptor
     }
   } = props;
 
@@ -130,7 +129,7 @@ function Category(props) {
   }, [match.params, match.path]);
 
   return (
-    <BaseLayout siteTitle={siteTitle} socialLinks={socialLinks}>
+    <BaseLayout model={levelDescriptor}>
       <section className="site-section pt-5">
         <div className="container">
           <div className="row blog-entries">

@@ -58,8 +58,7 @@ function Search(props) {
   const {
     model,
     meta: {
-      siteTitle,
-      socialLinks
+      levelDescriptor
     }
   } = props;
   const [paginationData, setPaginationData] = useState({
@@ -80,7 +79,7 @@ function Search(props) {
   }
 
   return (
-    <BaseLayout siteTitle={siteTitle} socialLinks={socialLinks}>
+    <BaseLayout model={levelDescriptor}>
       <section className="site-section pt-5 py-sm">
         <div className="container">
           <div className="row">

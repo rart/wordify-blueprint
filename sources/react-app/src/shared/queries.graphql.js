@@ -260,6 +260,7 @@ const main = `
     }
     levelDescriptors: component_level__descriptor {
       items {
+        ...byUrlQueryContentItemFields
         siteTitle_s
         file__name
         websiteShortname_s
